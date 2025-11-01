@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GlobeTrotter Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="branding">
+          <span class="logo" aria-hidden="true">🌍</span>
+          <h1>GlobeTrotter Quiz</h1>
+        </div>
+        <p class="subtitle">
+          Spot the country by its silhouette. Earn streaks, unlock badges, and
+          learn quick facts about every destination.
+        </p>
+      </header>
+
+      <main class="app-main" aria-live="polite">
+        <section class="quiz-card" aria-labelledby="quiz-title">
+          <div class="quiz-card__header">
+            <div class="scoreboard">
+              <div class="scoreboard__item">
+                <span class="label">Score</span>
+                <span class="value" id="score">0</span>
+              </div>
+              <div class="scoreboard__item">
+                <span class="label">Streak</span>
+                <span class="value" id="streak">0</span>
+              </div>
+              <div class="scoreboard__item">
+                <span class="label">Question</span>
+                <span class="value"><span id="question-number">1</span>/<span id="total-questions">10</span></span>
+              </div>
+            </div>
+            <div class="progress-wrapper" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="progress-bar" id="progress-bar"></div>
+            </div>
+          </div>
+
+          <div class="country-card">
+            <h2 id="quiz-title">Which country is this?</h2>
+            <figure class="country-card__figure">
+              <svg
+                id="country-shape"
+                viewBox="0 0 100 100"
+                role="img"
+                aria-labelledby="country-title"
+              >
+                <title id="country-title">Country outline for the current question</title>
+              </svg>
+              <figcaption id="country-hint"></figcaption>
+            </figure>
+          </div>
+
+          <div class="choices" id="choices" role="group" aria-label="Answer choices">
+            <!-- buttons injected by script -->
+          </div>
+
+          <div class="quiz-card__footer">
+            <button class="action" id="hint-button" type="button" aria-expanded="false">
+              Show hint
+            </button>
+            <div class="timer" id="timer">
+              <div class="timer__label">Time left</div>
+              <div class="timer__bar">
+                <span class="timer__fill" id="timer-fill"></span>
+              </div>
+            </div>
+            <button class="action action--secondary" id="skip-button" type="button">
+              Skip
+            </button>
+          </div>
+        </section>
+
+        <aside class="info-panel" aria-live="polite" aria-atomic="true">
+          <div class="info-panel__content" id="fact-panel">
+            <h3>Travel nugget</h3>
+            <p class="fact" id="fact-text">
+              Ready to explore? Identify the country silhouette to unlock
+              surprising facts.
+            </p>
+          </div>
+          <div class="badge-board" id="badge-board">
+            <h3>Badge cabinet</h3>
+            <ul>
+              <li id="badge-speed" class="badge">⏱️ Speedster</li>
+              <li id="badge-streak" class="badge">🔥 Streak Master</li>
+              <li id="badge-perfection" class="badge">🌟 Perfect Round</li>
+            </ul>
+          </div>
+        </aside>
+      </main>
+
+      <footer class="app-footer">
+        <button class="action action--primary" id="restart-button" type="button">
+          Play again
+        </button>
+        <p class="footer-text">
+          Shapes are simplified silhouettes for learning purposes.
+        </p>
+      </footer>
+    </div>
+
+    <template id="choice-template">
+      <button class="choice" type="button"></button>
+    </template>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
